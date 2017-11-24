@@ -32,11 +32,16 @@ class CMUDict(object):
 
         return freqs
 
-    def alignment(self):
-        pass
-
     def __getitem__(self, item):
         return self.data[item]
 
+    def align(self):
+        """one-to-one alignment"""
+
+        # multiple letters map to one phoneme
+
+        # one letter map to multiple phonemes
+
+        pass
 
 
