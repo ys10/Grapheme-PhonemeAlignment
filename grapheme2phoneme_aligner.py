@@ -138,6 +138,7 @@ def path_to_string(path_list):
     result = "".join(word_list) + "\t" + " ".join(phones) + "\n"
     return result
 
+
 class Aligner:
 
     def __init__(self, training_file_name, test_data_file_name):
