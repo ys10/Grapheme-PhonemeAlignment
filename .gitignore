@@ -10,6 +10,9 @@ assets/*
 # Test files
 test.py
 
+# VSCode files
+.vscode/*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
