@@ -3,10 +3,6 @@ import numpy as np
 from itertools import combinations_with_replacement
 from my_log import logging
 
-training_data_file_name = "assets/mini_training_data.txt"
-test_data_file_name = "assets/mini_test_data.txt"
-output_file_name = "assets/result.txt"
-
 
 def load_transcription(transcription_file_name):
     """
@@ -19,9 +15,9 @@ def load_transcription(transcription_file_name):
         ]
     """
     transcription_list = list()
-    with open(transcription_file_name, "r") as training_word_file:
+    with open(transcription_file_name, "r") as transcription_file:
         while 1:
-            lines = training_word_file.readlines(10000)
+            lines = transcription_file.readlines(10000)
             if not lines:
                 break
             for line in lines:
@@ -388,6 +384,9 @@ class Aligner:
 
 
 if __name__ == '__main__':
+    training_data_file_name = "assets/mini_training_data.txt"
+    test_data_file_name = "assets/mini_test_data.txt"
+    output_file_name = "assets/result.txt"
     iter_num = 5
     epsilon = 0
     aligner = Aligner(training_data_file_name, test_data_file_name)
