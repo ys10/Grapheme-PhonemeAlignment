@@ -1,6 +1,9 @@
 # IDEA project files
 .idea/*
 
+# Log files
+log/*
+
 # Data files
 assets/*
 
