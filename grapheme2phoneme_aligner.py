@@ -304,7 +304,6 @@ class Aligner:
         prob_value = acc_dist_matrix[g_count-1][p_count-1]
         """Trace back to find the best path with the max accumulated probability."""
         align_path = []
-        #############################
         i, j = g_count-1, p_count-1
         while 1:
             align_path.append((word[i], phones[j]))
@@ -319,40 +318,12 @@ class Aligner:
             else:
                 d1 = 0
                 d2 = 0
-            # if j > 0:
-            #     d3 = acc_dist_matrix[i][j - 1]
-            # else:
-            #     d3 = 0
             candidate_steps = [(i-1, j), (i-1, j-1)]
             candidate_prob = [d1, d2]
             i, j = candidate_steps[candidate_prob.index(max(candidate_prob))]
             pass
         align_path.reverse()
-        ##########################
-        # g_array, p_array = self._traceback(acc_dist_matrix)
-        # for i in range(len(g_array)):
-        #     if i > 0 & p_array[i] == p_array[i-1]:
-        #         align_path.append((word[g_array[i]], "*"))
-        #     else:
-        #         align_path.append((word[g_array[i]], phones[p_array[i]]))
-        #     pass
         return align_path, prob_value
-
-    def _traceback(self, acc_dist_matrix):
-        i, j = np.array(acc_dist_matrix.shape) - 2
-        g, p = [i], [j]
-        while i > 0 or j > 0:
-            tb = np.argmax((acc_dist_matrix[i, j], acc_dist_matrix[i, j + 1], acc_dist_matrix[i + 1, j]))
-            if tb == 0:
-                i -= 1
-                j -= 1
-            elif tb == 1:
-                i -= 1
-            else:  # (tb == 2):
-                j -= 1
-            g.insert(0, i)
-            p.insert(0, j)
-        return np.array(g), np.array(p)
 
     def e_step(self):
         """
