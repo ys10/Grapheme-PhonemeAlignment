@@ -128,10 +128,6 @@ class Processor:
     def process(self):
         result_list = []
         for word, phones in self.transcription_list:
-            # if len(word) < len(phones):
-            #     print("To be process:")
-            #     print(word + "\t" + " ".join(phones))
-            #     phones = process_phones_by_rules(word, phones, self.rule_list)
             phones = process_phones_by_rules(word, phones, self.rule_list)
             result_line = word + "\t" + " ".join(phones) + "\n"
             result_list.append(result_line)
@@ -157,10 +153,8 @@ def print_doubtful_transcription(result_file_name, doubtful_file_name):
 
 
 if __name__ == "__main__":
-    # data_set_file_name = "assets/process_dev_data.txt"
     data_set_file_name = "assets/universal_data_set.txt"
     process_rules_file_name = "assets/process_rules.txt"
-    # result_file_name = "assets/processed_transcription.txt"
     result_file_name = "assets/processed_universal_transcription.txt"
     doubtful_file_name = "assets/doubtful.txt"
     processor = Processor(data_set_file_name, process_rules_file_name, result_file_name)
