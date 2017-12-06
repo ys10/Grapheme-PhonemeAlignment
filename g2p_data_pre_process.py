@@ -45,12 +45,12 @@ def match(word, phones, rule):
         An empty tuple if word-phones pair doesn't match the rule.
     """
     len_diff = int(rule[3])
-    if len(word) - len(phones) > len_diff:
+    if len(word) - len(phones) > len_diff:  # do not need process
         return []
     match_indices = []
     adm_silent_error = int(rule[4])
-    g_indices = get_sub_indices(word, rule[0])
-    p_indices = get_sub_indices(phones, rule[1])
+    g_indices = get_sub_indices(word, rule[0])  # matched grapheme indices
+    p_indices = get_sub_indices(phones, rule[1])  # matched phoneme indices
     for i in range(len(g_indices)):
         for j in range(len(p_indices)):
             if abs(g_indices[i] - p_indices[j]) <= adm_silent_error:
@@ -58,7 +58,7 @@ def match(word, phones, rule):
                 pass
             pass
         pass
-    match_indices.sort(key=lambda p: abs(p[0] - p[1]))
+    match_indices.sort(key=lambda p: abs(p[0] - p[1]))  # best matched pair on the rule
     if not match_indices:
         return ()
     return match_indices[0]
