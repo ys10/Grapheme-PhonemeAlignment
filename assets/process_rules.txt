@@ -1,0 +1,99 @@
+## rule format
+## (grapheme:"b", phones:["b", "iy2"], modified_phone:"b_iy2", adm_len_diff:"-1",  adm_silent_error:"1")
+## adm_len_diff: admissible length different between word & phones, as len(word) - len(phones)
+## adm_silent_error: admissible most amount of previous silent letters
+###################################
+###################################
+## number
+1	w ah1 n	w_ah1_n	-1	1
+1	w ao1 n	w_ao1_n	-1	1
+2	t uw1	t_uw1	-1	1
+3	th r iy1	th_r_iy1	-1	1
+4	f ao1 r	f_ao1_r	-1	1
+5	f ay1 v	f_ay1_v	-1	1
+6	s ih1 k s	s_ih1_k_s	-1	1
+6	s ih2 k s	s_ih2_k_s	-1	1
+7	s eh1 v ah0 n	s_eh1_v_ah0_n	-1	1
+8	ey1 t	ey1_t	-1	1
+9	n ay1 n	n_ay1_n	-1	1
+## punctuation
+.	d aa1 t	d_aa1_t	-1	1
+## letter
+b	b iy0	b_iy0	-1	1
+b	b iy1	b_iy1	-1	1
+b	b iy2	b_iy2	-1	1
+c	s iy1	s_iy1	-1	1
+c	s iy2	s_iy2	-1	1
+d	d iy1	d_iy1	-1	1
+d	d iy2	d_iy2	-1	1
+f	eh1 f	eh1_f	-1	1
+f	eh2 f	eh2_f	-1	1
+g	jh iy1	jh_iy1	-1	1
+g	g iy1	g_iy1	-1	1
+g	jh iy2	jh_iy2	-1	1
+h	ey1 ch	ey1_ch	-1	1
+h	ey2 ch	ey2_ch	-1	1
+j	jh ey1	jh_ey1	-1	1
+j	jh ey2	jh_ey2	-1	1
+k	k ey1	k_ey1	-1	1
+k	k ey2	k_ey2	-1	1
+l	eh1 l	eh1_l	-1	1
+l	eh2 l	eh2_l	-1	1
+m	eh1 m	eh1_m	-1	1
+m	eh2 m	eh2_m	-1	1
+n	eh1 n	eh1_n	-1	1
+n	eh2 n	eh2_n	-1	1
+p	p iy0	p_iy0	-1	1
+p	p iy1	p_iy1	-1	1
+p	p iy2	p_iy2	-1	1
+q	k y uw1	k_y_uw1	-1	1
+q	k y uw2	k_y_uw2	-1	1
+r	aa1 r	aa1_r	-1	1
+r	aa2 r	aa2_r	-1	1
+s	eh1 s	eh1_s	-1	1
+s	eh2 s	eh2_s	-1	1
+t	t iy1	t_iy1	-1	1
+t	t iy2	t_iy2	-1	1
+u	y uw1	y_uw1	-1	1
+u	y uw2	y_uw2	-1	1
+v	v iy1	v_iy1	-1	1
+v	v iy2	v_iy2	-1	1
+w	d ah1 b ah0 y uw0	d_ah1_b_ah0_y_uw0	-3	1
+w	d ah1 b ah0 l y uw0	d_ah1_b_ah0_l_y_uw0	-3	1
+w	d ah1 b ah0 y uw1	d_ah1_b_ah0_y_uw1	-3	1
+w	d ah1 b ah0 l y uw1	d_ah1_b_ah0_l_y_uw1	-3	1
+x	eh1 k s	eh1_k_s	-1	1
+x	eh2 k s	eh2_k_s	-1	1
+x	ae1 k s	ae1_k_s	-1	1
+y	w ay1	w_ay1	-1	1
+y	w ay2	w_ay2	-1	1
+z	z iy1	z_iy1	-1	1
+z	z iy2	z_iy2	-1	1
+## one grapheme to multiple phonemes
+a	y ah0	y_ah0	0	1
+c	s iy0	s_iy0	0	1
+c	t s	t_s	0	1
+e	y eh1	y_eh1	0	1
+j	hh eh1	hh_eh1	0	1
+l	ah0 l	ah0_l	0	1
+m	ah0 m	ah0_m	0	1
+mc	m ah0 k	m_ah0_k	0	1
+o	y ow0	y_ow0	0	1
+s	s ey1 n	s_ey1_n	0	1
+s	s ih0 z	s_ih0_z	0	1
+s	z ah0	z_ah0	0	1
+s	zh ah0	zh_ah0	0	1
+t	ch ah0	ch_ah0	0	1
+u	ah0 w	ah0_w	0	1
+u	y ah0	y_ah0	0	1
+u	y ah0 w	y_ah0_w	0	1
+u	y uh0	y_uh0	0	1
+u	y uh1	y_uh1	0	1
+u	y uh2	y_uh1	0	1
+u	y uw0	y_uw0	0	1
+u	y_ah0 w	y_ah0_w	0	1
+w	hh w	hh_w	0	1
+x	g z	g_s	0	1
+x	k s	k_s	0	1
+x	k sh	k_sh	0	1
+z	t s	t_s	0	1
