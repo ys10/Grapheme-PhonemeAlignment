@@ -384,8 +384,8 @@ class Aligner:
 
 
 if __name__ == '__main__':
-    training_data_file_name = "assets/mini_training_data.txt"
-    test_data_file_name = "assets/mini_test_data.txt"
+    training_data_file_name = "assets/processed_universal_data_set.txt"
+    test_data_file_name = "assets/processed_universal_data_set.txt"
     output_file_name = "assets/result.txt"
     iter_num = 5
     epsilon = 0

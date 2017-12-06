@@ -151,6 +151,40 @@ def print_doubtful_transcription(result_file_name, doubtful_file_name):
         doubtful_file.writelines(doubtful_list)
     pass
 
+def remove_doubtful_transcription(result_file_name, doubtful_file_name):
+    """
+    Remove all doubtful lines from result file.
+    :param result_file_name:
+    :param doubtful_file_name:
+    """
+    """Load all doubtful lines."""
+    doubtful_line_list = []
+    with open(doubtful_file_name) as doubtful_file:
+        while 1:
+            lines = doubtful_file.readlines(10000)
+            if not lines:
+                break
+            for line in lines:
+                doubtful_line_list.append(line)
+        pass
+    """Load all result lines."""
+    result_line_list = []
+    with open(result_file_name) as result_file:
+        while 1:
+            lines = result_file.readlines(10000)
+            if not lines:
+                break
+            for line in lines:
+                result_line_list.append(line)
+        pass
+    """Remove lines appearing in doubtful file from result file."""
+    result_line_list = list(set(result_line_list) - set(doubtful_line_list))
+    """Write all wanted lines into result file."""
+    with open(result_file_name, "w") as result_file:
+        result_file.writelines(result_line_list)
+        pass
+    pass
+
 
 if __name__ == "__main__":
     data_set_file_name = "assets/universal_data_set.txt"
@@ -160,4 +194,5 @@ if __name__ == "__main__":
     processor = Processor(data_set_file_name, process_rules_file_name, result_file_name)
     processor.process()
     print_doubtful_transcription(result_file_name, doubtful_file_name)
+    remove_doubtful_transcription(result_file_name, doubtful_file_name)
     pass
