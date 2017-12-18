@@ -5,7 +5,8 @@
 log/*
 
 # Data files
-assets/dev/*
+assets/*
+data/
 
 # Test files
 test.py
