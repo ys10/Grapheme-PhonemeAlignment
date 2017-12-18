@@ -19,10 +19,10 @@ cxc	s_iy1 eh1 k s_iy1
 davis'	d ey1 v ah0 s ah0 z
 disability	d ih0 s ah0 b ih1 l ih0 t iy0 z
 dobrzynski	d ow2 b r ah0 zh ih1 n s k iy0
-dr	d r ay1 v
 dr	d aa1 k t er0
-dr.	d r ay1 v
+dr	d r ay1 v
 dr.	d aa1 k t er0
+dr.	d r ay1 v
 etc	eh2 t_s eh1 t er0 ah0
 feb	f eh1 b y ah0 w eh2 r iy0
 ga	jh ao1 r jh ah0
@@ -69,8 +69,8 @@ rwandans	r ah0 w aa1 n d ah0 n z
 senor	s iy2 n y ao1 r
 senora	s iy2 n y ao1 r ah0
 sgt	s aa1 r jh ah0 n t
-sr	s iy1 n y er0
 sr	s ih1 s t er0
+sr	s iy1 n y er0
 srpska	s r ah1 p s k ah0
 st.	s t r iy1 t
 strzelecki	s t r eh2 z ih0 l eh1 t_s k iy0
@@ -84,5 +84,5 @@ vs	v er1 s ah0 z
 wm	w ih1 l y ah0 m
 wor	d ah1 b eh0 l y uw1 ow1 aa1 r
 ws	d ah1 b y ah0 eh1 s
-xoma	ih0 g_s ow1 m ah0
 xoma	eh0 k_s ow1 m ah0
+xoma	ih0 g_s ow1 m ah0

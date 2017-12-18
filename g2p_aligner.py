@@ -200,11 +200,18 @@ class Aligner:
         :return: a normalized probability matrix.
         """
         shape = self.prob_matrix.shape
-        sum_array = np.sum(self.prob_matrix, axis=1)
+        grapheme_sum_list = np.sum(self.prob_matrix, axis=1)
+        all_sum = np.sum(self.prob_matrix)
         for i in range(shape[0]):
-            for j in range(shape[1]):
-                self.prob_matrix[i][j] /= sum_array[i]
-                pass
+            """Reduce the probability of G2star """
+            j = self.get_phoneme_id("*")
+            if self.prob_matrix[i][j] > grapheme_sum_list[i] / 5:
+                logging.info("prob_matrix[i][j] > grapheme_sum_list / 3 !!!")
+                self.prob_matrix[i][j] = grapheme_sum_list[i] / 5
+                # TODO
+            # for j in range(shape[1]):
+            #     self.prob_matrix[i][j] /= all_sum
+            #     pass
             pass
         logging.debug("prob_matrix:")
         logging.debug(self.prob_matrix)
@@ -243,7 +250,6 @@ class Aligner:
         for (word, phones) in self.transcription_list:
             pair_list = introduce_epsilon_phone_seq(word, phones)  # Introduce epsilon into phone list
             for (w, p) in pair_list:
-                # align_path, _ = self.dynamic_time_wrapping(w, p)
                 align_path = []
                 for i in range(len(w)):
                     align_path.append((w[i], p[i]))
@@ -310,6 +316,28 @@ class Aligner:
         align_path.reverse()
         return align_path, prob_value
 
+
+    def cal_acc_prob(self, word, phones):
+        """
+        Calculate the accumulated probability of w2p pair.
+        Note: len(w) =len(p)
+        :param word:
+        :param phones:
+        :return: accumulated probability of w2p pair
+        """
+        acc_prob = 1.0
+        align_path = []
+        for i in range(len(word)):
+            g = word[i]
+            g_idx = self.get_grapheme_id(g)
+            p = phones[i]
+            p_idx = self.get_phoneme_id(p)
+            align_path.append((g, p))
+            acc_prob *= self.prob_matrix[g_idx][p_idx]
+            pass
+        return align_path, acc_prob
+
+
     def e_step(self):
         """
         Expectation step that computes a optimized path with maximum probability for each word-phones pair.
@@ -324,13 +352,16 @@ class Aligner:
         align_paths = []
         for (word, phones) in self.transcription_list:
             pair_list = introduce_epsilon_phone_seq(word, phones)
-            logging.debug("pair list:")
-            logging.debug(pair_list)
+            logging.info("pair list:")
+            logging.info(pair_list)
             candidate_path_list = []  # Construct a candidate path list for all word-phones
             for (w, p) in pair_list:
-                align_path, prob_value = self.dynamic_time_wrapping(w, p)
+                # align_path, prob_value = self.dynamic_time_wrapping(w, p)
+                align_path, prob_value = self.cal_acc_prob(w, p)
                 candidate_path_list.append((align_path, prob_value))
             candidate_path_list.sort(key=lambda x: x[1], reverse=True)  # Sort by probability
+            logging.info("Pick up the promising path with the biggest probability.")
+            logging.info(candidate_path_list[0][0])
             align_paths.append(candidate_path_list[0][0])  # Pick up the promising path with the biggest probability.
             pass
         return align_paths
@@ -352,7 +383,7 @@ class Aligner:
         self.init_prob_of_grapheme_match_phoneme()
         for i in range(iter_num):
             logging.info("Training epoch:" + str(i))
-            last_prob_matrix = self.prob_matrix.copy()
+            # last_prob_matrix = self.prob_matrix.copy()
             align_paths = self.e_step()  # Expectation step
             self.m_step(align_paths)  # Maximum step
             # if self.is_prob_matrix_equal(last_prob_matrix, self.prob_matrix, epsilon):
@@ -371,7 +402,8 @@ class Aligner:
             pair_list = introduce_epsilon_phone_seq(word, phones)
             candidate_path_list = []  # Construct a candidate path list for all possible word-phones pairs
             for (w, p) in pair_list:
-                align_path, prob_value = self.dynamic_time_wrapping(w, p)
+                # align_path, prob_value = self.dynamic_time_wrapping(w, p)
+                align_path, prob_value = self.cal_acc_prob(w, p)
                 candidate_path_list.append((align_path, prob_value))
             candidate_path_list.sort(key=lambda x: x[1], reverse=True)  # Sort by probability
             result_string = path_to_string(candidate_path_list[0][0])

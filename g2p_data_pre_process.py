@@ -132,6 +132,7 @@ class Processor:
             result_line = word + "\t" + " ".join(phones) + "\n"
             result_list.append(result_line)
             pass
+        result_list.sort()
         with open(self.result_file_name, "w") as result_file:
             result_file.writelines(result_list)
             pass
@@ -189,7 +190,7 @@ def remove_doubtful_transcription(result_file_name, doubtful_file_name):
 if __name__ == "__main__":
     data_set_file_name = "assets/universal_data_set.txt"
     process_rules_file_name = "assets/process_rules.txt"
-    result_file_name = "assets/processed_universal_transcription.txt"
+    result_file_name = "assets/processed_universal_data_set.txt"
     doubtful_file_name = "assets/doubtful.txt"
     processor = Processor(data_set_file_name, process_rules_file_name, result_file_name)
     processor.process()

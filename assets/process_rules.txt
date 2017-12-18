@@ -70,7 +70,6 @@ y	w ay2	w_ay2	-1	1
 z	z iy1	z_iy1	-1	1
 z	z iy2	z_iy2	-1	1
 ## one grapheme to multiple phonemes
-a	y ah0	y_ah0	0	1
 c	s iy0	s_iy0	0	1
 c	t s	t_s	0	1
 e	y eh1	y_eh1	0	1
@@ -78,6 +77,7 @@ j	hh eh1	hh_eh1	0	1
 l	ah0 l	ah0_l	0	1
 m	ah0 m	ah0_m	0	1
 mc	m ah0 k	m_ah0_k	0	1
+na	y ah0	y_ah0	0	1
 o	y ow0	y_ow0	0	1
 s	s ey1 n	s_ey1_n	0	1
 s	s ih0 z	s_ih0_z	0	1
@@ -87,11 +87,12 @@ t	ch ah0	ch_ah0	0	1
 u	ah0 w	ah0_w	0	1
 u	y ah0	y_ah0	0	1
 u	y ah0 w	y_ah0_w	0	1
+u	y ah0_w	y_ah0_w	0	1
+u	y_ah0 w	y_ah0_w	0	1
 u	y uh0	y_uh0	0	1
 u	y uh1	y_uh1	0	1
 u	y uh2	y_uh1	0	1
 u	y uw0	y_uw0	0	1
-u	y_ah0 w	y_ah0_w	0	1
 w	hh w	hh_w	0	1
 x	g z	g_s	0	1
 x	k s	k_s	0	1
